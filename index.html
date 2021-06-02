@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Capital One Summit Challenge Movie Search</title>
+    <link rel="stylesheet" href="./css/styles.css">
+</head>
+<body>
+
+    <!-- Heading -->
+    <header>
+        <h1 id="title">Movie Search</h1>
+    </header>
+
+    <!-- Main Body -->
+    <main>
+        <!-- Search box -->
+        <p id="description">Enter the name of a movie to search!</p>
+
+        <div id="searchBarHolder">
+            <input type="text" name="movieName" value="" placeholder="Movie Name Here!" id="movieName">
+            <input type="submit" value="Submit" id="submitBtn"></input>    
+        </div>
+        
+        <div id="searchResultContainer">
+        <!-- Search Results -->
+            <div id="searchResult"></div>
+        </div>
+        <div class="pagenumbers" id="pagination"></div>
+    </main>
+    <script src="main.js"></script>
+</body>
+</html>
