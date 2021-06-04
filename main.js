@@ -25,11 +25,13 @@ btn.addEventListener('click', (e) => {
 async function getMovies(movieName, pageNumber = 1) {
   const movieStream = await fetch(`http://www.omdbapi.com/?s=${movieName}&type=movie&page=${pageNumber}&apikey=a173ef96`);
   const movies = await movieStream.json();
+  //const poster = await movieStream.blob();
   let mainContainer = document.getElementById("searchResultContainer");
   SetupPagination(movies.totalResults, pagination_element, rows);
   console.log(movies.Search);
   for (let i = 0; i < movies.Search.length; i++) {
     let div = document.createElement("div");
+    //const postImage.src = URL.createObjectURL(poster);
     div.setAttribute("class", "movie");
     div.innerHTML = `${movies.Search[i].Title}`;
     div.addEventListener('click', function() {
