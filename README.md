@@ -9,7 +9,7 @@ Web app created using JavaScript and HTML/CSS for Capital One Summit Challenge
 
 ## General info
 This web app gives you information on movies based on the name you searched for using the OMDb API.
-You can see the app in action by going to howard-capital-one.herokuapp.com
+You can see the app in action by going to http://howard-capital-one.herokuapp.com
 
 ## Technologies
 Project is created with:
