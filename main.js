@@ -48,7 +48,7 @@ async function getMovieDetail(movieName) {
   const movie = await movieDetailStream.json();
   let mainContainer = document.getElementById("movieDetailContainer");
   
-  if (!firstDetail) {
+  if (mainContainer.firstChild) {
     let previousDetail = document.getElementById("movieDetail");
     previousDetail.parentNode.removeChild(previousDetail);
   }
