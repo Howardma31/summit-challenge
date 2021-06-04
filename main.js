@@ -26,6 +26,7 @@ async function getMovies(movieName, pageNumber = 1) {
   const movieStream = await fetch(`http://www.omdbapi.com/?s=${movieName}&type=movie&page=${pageNumber}&apikey=a173ef96`);
   const movies = await movieStream.json();
   //const poster = await movieStream.blob();
+  console.log(movies);
   let mainContainer = document.getElementById("searchResultContainer");
   SetupPagination(movies.totalResults, pagination_element, rows);
   console.log(movies.Search);
@@ -39,7 +40,7 @@ async function getMovies(movieName, pageNumber = 1) {
     })
     mainContainer.appendChild(div);
   }
-  viewMoreButton();
+  viewMoreButton(movies);
   firstDetail = true;
 }
 
@@ -101,7 +102,7 @@ function PaginationButton(page) {
   return button;
 }
 
-function viewMoreButton() {
+function viewMoreButton(movies) {
   let mainContainer = document.getElementById("viewMoreBtn");
   let button = document.createElement('button');
   button.innerText = 'View More';
@@ -117,7 +118,7 @@ function viewMoreButton() {
     getMovies(movieName, ++current_page);
   })
   let div = button;
-  if (firstViewMore) {
+  if (firstViewMore && (movies.totalResults - current_page * 10) > 0) {
     mainContainer.appendChild(div);
   }
   firstViewMore = false;
@@ -126,4 +127,3 @@ function viewMoreButton() {
 const inputValid = movieName => {
   return movieName !== '';
 }
-
