@@ -5,22 +5,29 @@ let movieName = null;
 let current_page = 1; 
 let rows = 10;
 let firstDetail = true;
+let firstViewMore = true;
 
 btn.addEventListener('click', (e) => {
   movieName = document.getElementById("movieName").value;
   if (inputValid(movieName)){
+    let div = document.getElementById('searchResultContainer');
+    while (div.firstChild) {
+      div.removeChild(div.firstChild);
+    }
+    if (!firstViewMore) {
+      let div1 = document.getElementById('viewMoreBtn');
+      div1.removeChild(div1.firstChild);
+    }
     getMovies(movieName);
   }
 });
 
 async function getMovies(movieName, pageNumber = 1) {
-  const movieStream = await fetch(`http://www.omdbapi.com/?s=${movieName}&type=movie&page=${pageNumber}&apikey=4051dc2f`);
+  const movieStream = await fetch(`http://www.omdbapi.com/?s=${movieName}&type=movie&page=${pageNumber}&apikey=a173ef96`);
   const movies = await movieStream.json();
   let mainContainer = document.getElementById("searchResultContainer");
   SetupPagination(movies.totalResults, pagination_element, rows);
-
-  console.log(movies);
-  
+  console.log(movies.Search);
   for (let i = 0; i < movies.Search.length; i++) {
     let div = document.createElement("div");
     div.setAttribute("class", "movie");
@@ -30,14 +37,14 @@ async function getMovies(movieName, pageNumber = 1) {
     })
     mainContainer.appendChild(div);
   }
-
+  viewMoreButton();
   firstDetail = true;
 }
 
 async function getMovieDetail(movieName) {
-  const movieDetailStream = await fetch(`http://www.omdbapi.com/?t=${movieName}&type=movie&apikey=4051dc2f`);
+  const movieDetailStream = await fetch(`http://www.omdbapi.com/?t=${movieName}&type=movie&apikey=a173ef96`);
   const movie = await movieDetailStream.json();
-  let mainContainer = document.getElementById("searchResultContainer");
+  let mainContainer = document.getElementById("movieDetailContainer");
   
   if (!firstDetail) {
     let previousDetail = document.getElementById("movieDetail");
@@ -55,10 +62,19 @@ function SetupPagination(length, wrapper, rows_per_page) {
   wrapper.innerHTML = '';
 
   let page_count = Math.ceil(length / rows_per_page);
-  for (let i = 1; i < page_count + 1 && i < 6; i++) {
-    let btn = PaginationButton(i);
-    wrapper.appendChild(btn);
+  if (page_count >= current_page + 2 && current_page >= 4) {
+    for (let i = current_page - 2; i < current_page + 3; i++) {
+      let btn = PaginationButton(i);
+      wrapper.appendChild(btn);
+    } 
   }
+  else {
+    for (let i = 1; i < page_count + 1 && i < 6; i++) {
+      let btn = PaginationButton(i);
+      wrapper.appendChild(btn);
+    }
+  }
+  firstViewMore = true;
 }
 
 function PaginationButton(page) {
@@ -74,21 +90,35 @@ function PaginationButton(page) {
       div.removeChild(div.firstChild);
     }
     getMovies(movieName, current_page);
+    let div1 = document.getElementById('viewMoreBtn');
+    while (div1.firstChild) {
+      div1.removeChild(div1.firstChild);
+    }
   })
 
   return button;
 }
 
-function ShowMoreButton() {
+function viewMoreButton() {
+  let mainContainer = document.getElementById("viewMoreBtn");
   let button = document.createElement('button');
-  button.innerText = 'Show More';
-  let nextPage = current_page++;
+  button.innerText = 'View More';
 
   button.addEventListener('click', function () {
-    getMovies(movieName, nextPage);
+    if (!firstViewMore) {
+      let div1 = document.getElementById('viewMoreBtn');
+      while (div1.firstChild) {
+        div1.removeChild(div1.firstChild);
+      }
+    }
+    firstViewMore = false;
+    getMovies(movieName, ++current_page);
   })
-
-  return button;
+  let div = button;
+  if (firstViewMore) {
+    mainContainer.appendChild(div);
+  }
+  firstViewMore = false;
 }
 
 const inputValid = movieName => {

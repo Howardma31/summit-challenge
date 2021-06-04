@@ -1,16 +1,41 @@
-header {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  height: 60px;
-  background-color: #EEE;
-  box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.2);
+body {
+  font-family: Arial, Helvetica, sans-serif;
+  font-size: 16px;
+  line-height: 1.6em;
+  margin: 0;
+}
+
+#mainHeader {
+  color: white;
+  background-color: #333;
+}
+
+.container {
+  width: 80%;
+  margin: auto;
+  overflow: hidden;
+  text-align: center;
 }
 
 div main {
   display: flex;
   flex-direction: column;
   align-items: center;
+}
+
+div #movieDetailContainer {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 40px;
+  background-color: #EEE;
+  box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.2);
+}
+
+div #movieDetail {
+  display: flex;
+  margin-top: 15px;
+  justify-content: center;
 }
 
 div #searchResultContainer {
@@ -61,9 +86,18 @@ div .movie:hover {
   background-color: #44EEAA;
 }
 
-.pagenumbersbutton:active {
+.pagenumbers button:active {
   background-color: #44EEAA;
   box-shadow: inset 0px 0px 4px rgba(0, 0, 0, 0.2);
+}
+
+#viewMoreBtnContainer {
+  text-align: center;
+}
+
+#viewMoreBtn {
+  color: white;
+  font-size: 18px;
 }
 
 #description {
@@ -76,5 +110,5 @@ div .movie:hover {
 }
 
 #searchResult {
-  text-align: center;
+  align-items: center;
 }

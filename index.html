@@ -10,8 +10,10 @@
 <body>
 
     <!-- Heading -->
-    <header>
-        <h1 id="title">Movie Search</h1>
+    <header id="mainHeader">
+        <div class="container">
+            <h1>Movie Search</h1>
+        </div>
     </header>
 
     <!-- Main Body -->
@@ -23,10 +25,13 @@
             <input type="text" name="movieName" value="" placeholder="Movie Name Here!" id="movieName">
             <input type="submit" value="Submit" id="submitBtn"></input>    
         </div>
-        
+        <div id="movieDetailContainer"></div>
         <div id="searchResultContainer">
         <!-- Search Results -->
             <div id="searchResult"></div>
+        </div>
+        <div id="viewMoreBtnContainer">
+            <div id="viewMoreBtn"></div>
         </div>
         <div class="pagenumbers" id="pagination"></div>
     </main>
