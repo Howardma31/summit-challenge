@@ -1,4 +1,4 @@
-# captialOne-summit-challenge
+# Summit-challenge
 
 Web app created using JavaScript and HTML/CSS for Capital One Summit Challenge
 
