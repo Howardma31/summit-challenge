@@ -9,7 +9,7 @@ Web app created using JavaScript and HTML/CSS for Capital One Summit Challenge
 
 ## General info
 This web app gives you information on movies based on the name you searched for using the OMDb API.
-You can see the app in action by going to 
+You can see the app in action by going to https://howardma31.github.io/captialOne-summit-challenge/
 
 ## Technologies
 Project is created with:
