@@ -1,6 +1,6 @@
 # captialOne-summit-challenge
 
-Web app created using JavaScript and HTML/CSS
+Web app created using JavaScript and HTML/CSS for Capital One Summit Challenge
 
 ## Table of Contents
 * [General info](#general-info)
